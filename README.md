@@ -1,24 +1,64 @@
-# README
+# furima DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null: false|
+|password|string|null: false|
+|nickname|string|null: false|
+|firstname|string|null: false|
+|lastname|string|null: false|
+|firstname_kana|string|null: false|
+|lastname_kana|string|null: false|
+|years|integer|null: false|
+|month|integer|null: false|
+|days|integer|null: false|
+### Association
+- has_many :items
+- has_many :comments
 
-Things you may want to cover:
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|text||
+|text|text||
+|item_name|string|null: false|
+|categories|string|null: false|
+|shopping_burden|string|null: false|
+|area|string|null: false|
+|several_days|string|null: false|
+|prices|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+### Association
+- has_many :comments
+- has_many :purchase
+- belongs_to :user
 
-* Ruby version
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text||
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :item
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## purchaseテーブル
+|Column|Type|Options|
+|------|----|-------|
+|credit_num|integer|null: false|
+|limit_month|integer|null: false|
+|limit_year|integer|null: false|
+|security_num|integer|null: false|
+|postal_code|integer|null: false|
+|prefectures|string|null: false|
+|city|string|null: false|
+|address|string|null: false|
+|building|string||
+|telephone|integer|null: false|
+|item_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :item
