@@ -10,11 +10,12 @@
 |lastname|string|null: false|
 |firstname_kana|string|null: false|
 |lastname_kana|string|null: false|
-|Birthdate|integer|null: false|
+|birthdate|integer|null: false|
 
 ### Association
 - has_many :items, through: :user_item
 - has_many :comments
+- has_one :addresses
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -52,24 +53,22 @@
 ## purchaseテーブル
 |Column|Type|Options|
 |------|----|-------|
+|item_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
 |postal_code|integer|null: false|
 |prefecture_id|integer|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |building|string||
 |telephone|integer|null: false|
-|item_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
+|user_id|integer|null; false|
 ### Association
-- belongs_to :user
-- belongs_to :item
 - belongs_to_active_hash :prefecture
-
-## user_itemテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
-### Association
 - belongs_to :user
-- belongs_to :item
