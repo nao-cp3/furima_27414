@@ -11,11 +11,9 @@
 |firstname_kana|string|null: false|
 |lastname_kana|string|null: false|
 |birthdate|integer|null: false|
-
 ### Association
-- has_many :items, through: :user_item
+- has_many :items
 - has_many :comments
-- has_one :addresses
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -55,9 +53,11 @@
 |------|----|-------|
 |item_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
+|address_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
+- belongs_to :address
 
 ## addressesテーブル
 |Column|Type|Options|
@@ -67,8 +67,6 @@
 |city|string|null: false|
 |address|string|null: false|
 |building|string||
-|telephone|integer|null: false|
-|user_id|integer|null; false|
+|telephone|string|null: false|
 ### Association
-- belongs_to_active_hash :prefecture
-- belongs_to :user
+- has_one :purchase
