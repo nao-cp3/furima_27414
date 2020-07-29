@@ -4,8 +4,8 @@ describe User do
   describe '#create' do
 
     before do 
-      @user = User.new(nickname: "abe", email: "kkk@gmail.com", password: "00000000")
-      @user.save
+      user = User.new(nickname: "abe", email: "kkk@gmail.com", password: "00000000")
+      user.save
     end
 
     it "is invalid without a nickname" do
