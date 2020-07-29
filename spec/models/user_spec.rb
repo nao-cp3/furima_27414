@@ -3,9 +3,9 @@ require 'rails_helper'
 describe User do
   describe '#create' do
 
-    it "is valid with a nickname, email, password, password_confirmation" do
-      user = build(:user)
-      expect(user).to be_valid
+    before do 
+      @user = User.new(nickname: "abe", email: "kkk@gmail.com", password: "00000000")
+      @user.save
     end
 
     it "is invalid without a nickname" do
