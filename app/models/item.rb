@@ -20,5 +20,5 @@ class Item < ApplicationRecord
   validates :text, presence: true
   validates :name, presence: true
   validates :image, presence: true
-  validates :prices, presence: true
+  validates :prices, presence: true, numericality:{only_integer:true, greater_than: 300, less_than: 9999999}
 end
