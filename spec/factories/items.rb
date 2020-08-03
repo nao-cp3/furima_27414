@@ -8,5 +8,6 @@ FactoryBot.define do
     postage_id {2}
     prefecture_id {2}
     several_days_id {2}
+    association :user
   end
 end

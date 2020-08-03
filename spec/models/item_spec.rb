@@ -61,5 +61,11 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors[:several_days_id]).to include("must be other than 1")
     end
+
+    it "is invalid without user_id" do
+      @item.user_id = nil
+      @item.valid?
+      expect(@item.errors[:user_id]).to include()
+    end
   end
 end
