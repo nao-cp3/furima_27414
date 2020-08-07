@@ -58,9 +58,4 @@ RSpec.describe PurchaseAddress, type: :model do
     expect(@purchase_address.errors.full_messages).to include("Telephone is too long (minimum is 11 characters)")
   end
 
-  it "telephoneが12桁以上の場合は登録できないこと" do
-    @purchase_address.telephone = "012345678910"
-    @purchase_address.valid?
-    expect(@purchase_address.errors.full_messages).to include("Telephone is too long (minimum is 11 characters)")
-  end
 end

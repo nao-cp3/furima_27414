@@ -7,13 +7,13 @@ class PurchaseController < ApplicationController
 
   def create
     @purchase = PurchaseAddress.new(purchase_params)
-      if @purchase.valid?
-        pay_item
-        @purchase.save
+    if @purchase.valid?
+      pay_item
+      @purchase.save
       return redirect_to root_path
-      else
-        render 'index'
-      end
+    else
+      render 'index'
+    end
   end
 
   private
