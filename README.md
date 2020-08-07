@@ -14,12 +14,13 @@
 ### Association
 - has_many :items
 - has_many :comments
+- has_many :purchases
 
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image|text||
-|text|string||
+|image|text|null: false|
+|text|string|null: false|
 |name|string|null: false|
 |category_id|integer|null: false|
 |condition_id|integer|null: false|
@@ -38,16 +39,6 @@
 - belongs_to_active_hash :postage
 - belongs_to_active_hash :several_days
 
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|text||
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :user
-- belongs_to :item
-
 ## purchaseテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -57,16 +48,16 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_one :address
 
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|postal_code|integer|null: false|
+|postal_code|string|null: false|
 |prefecture_id|integer|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |building|string||
 |telephone|string|null: false|
 ### Association
-- has_one :purchase
+- belongs_to :purchase
